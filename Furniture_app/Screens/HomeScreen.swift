@@ -11,7 +11,7 @@ struct HomeScreen: View {
     @State private var search: String = ""
     @State private var selectedIndex: Int = 1
     
-    private let categories = ["All", "Chair", "Sofa", "Lamp", "Kitchen", "Table"]
+    private let categories = ["全部", "漢堡", "吐司", "蛋餅", "飲料"]
     var body: some View {
         NavigationView {
             ZStack {
@@ -120,10 +120,10 @@ struct AppBarView: View {
 
 struct TagLineView: View {
     var body: some View {
-        Text("Find the \nBest ")
+        Text("歡迎光臨\n")
             .font(.custom("PlayfairDisplay-Regular", size: 28))
             .foregroundColor(Color("Primary"))
-            + Text("Furniture!")
+            + Text("unknow早餐店!")
             .font(.custom("PlayfairDisplay-Bold", size: 28))
             .fontWeight(.bold)
             .foregroundColor(Color("Primary"))
@@ -137,7 +137,7 @@ struct SearchAndScanView: View {
             HStack {
                 Image("Search")
                     .padding(.trailing, 8)
-                TextField("Search Furniture", text: $search)
+                TextField("搜尋餐點", text: $search)
             }
             .padding(.all, 20)
             .background(Color.white)
@@ -183,14 +183,14 @@ struct ProductCardView: View {
                 .resizable()
                 .frame(width: size, height: 200 * (size/210))
                 .cornerRadius(20.0)
-            Text("Luxury Swedian chair").font(.title3).fontWeight(.bold)
+            Text("豬肉漢堡").font(.title3).fontWeight(.bold)
             
             HStack (spacing: 2) {
                 ForEach(0 ..< 5) { item in
                     Image("star")
                 }
                 Spacer()
-                Text("$1299")
+                Text("$40")
                     .font(.title3)
                     .fontWeight(.bold)
             }

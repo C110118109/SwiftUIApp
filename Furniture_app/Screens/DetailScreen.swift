@@ -26,12 +26,12 @@ struct DetailScreen: View {
             .edgesIgnoringSafeArea(.top)
             
             HStack {
-                Text("$1299")
+                Text("$40")
                     .font(.title)
                     .foregroundColor(.white)
                 Spacer()
                 
-                Text("Add to Cart")
+                Text("加入購物車")
                     .font(.title3)
                     .fontWeight(.semibold)
                     .foregroundColor(Color("Primary"))
@@ -91,7 +91,7 @@ struct DescriptionView: View {
     var body: some View {
         VStack (alignment: .leading) {
             //                Title
-            Text("Luruxy Swedia \nChair")
+            Text("豬肉漢堡")
                 .font(.title)
                 .fontWeight(.bold)
             //                Rating
@@ -105,38 +105,35 @@ struct DescriptionView: View {
                 Spacer()
             }
             
-            Text("Description")
+            Text("餐點介紹")
                 .fontWeight(.medium)
                 .padding(.vertical, 8)
-            Text("Luxury Swedian Chair is a contemporary chair based on the virtues of modern craft. it carries on the simplicity and honestly of the archetypical chair.")
+            Text("我是好吃的豬肉漢堡")
                 .lineSpacing(8.0)
                 .opacity(0.6)
             
             //                Info
             HStack (alignment: .top) {
                 VStack (alignment: .leading) {
-                    Text("Size")
+                    Text("內容物")
                         .font(.system(size: 16))
                         .fontWeight(.semibold)
-                    Text("Height: 120 cm")
+                    Text("豬肉+生菜＋小黃瓜")
                         .opacity(0.6)
-                    Text("Wide: 80 cm")
-                        .opacity(0.6)
-                    Text("Diameter: 72 cm")
-                        .opacity(0.6)
+                    
                 }
                 
                 .frame(maxWidth: .infinity, alignment: .leading)
                 
                 Spacer()
                 
-                VStack (alignment: .leading) {
-                    Text("Treatment")
-                        .font(.system(size: 16))
-                        .fontWeight(.semibold)
-                    Text("Jati Wood, Canvas, \nAmazing Love")
-                        .opacity(0.6)
-                }
+                //VStack (alignment: .leading) {
+                    //Text("Treatment")
+                        //.font(.system(size: 16))
+                        //.fontWeight(.semibold)
+                    //Text("Jati Wood, Canvas, \nAmazing Love")
+                        //.opacity(0.6)
+                //}
                 .frame(maxWidth: .infinity, alignment: .leading)
             }
             .padding(.vertical)
@@ -144,13 +141,13 @@ struct DescriptionView: View {
             //                Colors and Counter
             HStack {
                 VStack (alignment: .leading) {
-                    Text("Colors")
-                        .fontWeight(.semibold)
-                    HStack {
-                        ColorDotView(color: Color.white)
-                        ColorDotView(color: Color.black)
-                        ColorDotView(color: Color(#colorLiteral(red: 0.1803921569, green: 0.6352941176, blue: 0.6705882353, alpha: 1)))
-                    }
+                    //Text("Colors")
+                        //.fontWeight(.semibold)
+                    //HStack {
+                       // ColorDotView(color: Color.white)
+                        //ColorDotView(color: Color.black)
+                        //ColorDotView(color: Color(#colorLiteral(red: 0.1803921569, green: 0.6352941176, blue: 0.6705882353, alpha: 1)))
+                    //}
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 
