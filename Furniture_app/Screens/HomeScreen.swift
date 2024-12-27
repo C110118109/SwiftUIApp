@@ -7,10 +7,26 @@
 
 import SwiftUI
 
+struct Product {
+    let name: String
+    let description: String
+    let price: String
+    let rating: Double
+    let ingredients: String
+    let imageName: String
+}
+
 struct HomeScreen: View {
     @State private var search: String = ""
     @State private var selectedIndex: Int = 1
     
+    let products: [Product] = [
+        Product(name: "豬肉漢堡", description: "我是好吃的豬肉漢堡", price: "$40", rating: 4.9, ingredients: "豬肉+生菜＋小黃瓜", imageName: "chair_1"),
+        Product(name: "雞肉漢堡", description: "美味的雞肉漢堡", price: "$45", rating: 4.8, ingredients: "雞肉+番茄＋美奶滋", imageName: "chair_2"),
+        Product(name: "牛肉漢堡", description: "多汁的牛肉漢堡", price: "$50", rating: 5.0, ingredients: "牛肉+洋蔥＋奶酪", imageName: "chair_3"),
+        Product(name: "素食漢堡", description: "健康的素食漢堡", price: "$35", rating: 4.7, ingredients: "豆腐+生菜＋番茄", imageName: "chair_4")
+    ]
+
     private let categories = ["全部", "漢堡", "吐司", "蛋餅", "飲料"]
     var body: some View {
         NavigationView {
@@ -43,23 +59,24 @@ struct HomeScreen: View {
                             .font(.custom("PlayfairDisplay-Bold", size: 24))
                             .padding(.horizontal)
                         
-                        ScrollView (.horizontal, showsIndicators: false) {
-                            HStack (spacing: 0) {
-                                ForEach(0 ..< 4) { i in
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack(spacing: 0) {
+                                ForEach(products.indices, id: \.self) { index in
                                     NavigationLink(
-                                        destination: DetailScreen(),
+                                        destination: DetailScreen(product: products[index]),
                                         label: {
-                                            ProductCardView(image: Image("chair_\(i+1)"), size: 210)
-                                        })
-                                        .navigationBarHidden(true)
-                                        .foregroundColor(.black)
+                                            ProductCardView(size: 210, product: products[index])
+                                        }
+                                    )	
+                                    .navigationBarHidden(true)
+                                    .foregroundColor(.black)
                                 }
                                 .padding(.leading)
                             }
                         }
                         .padding(.bottom)
                         
-                        Text("Best")
+                        /**Text("Best")
                             .font(.custom("PlayfairDisplay-Bold", size: 24))
                             .padding(.horizontal)
                         
@@ -70,7 +87,7 @@ struct HomeScreen: View {
                                 }
                                 .padding(.leading)
                             }
-                        }
+                        }*/
                         
                     }
                 }
@@ -174,23 +191,24 @@ struct CategoryView: View {
 }
 
 struct ProductCardView: View {
-    let image: Image
+    
     let size: CGFloat
+    let product: Product
     
     var body: some View {
         VStack {
-            image
+            Image(product.imageName)
                 .resizable()
                 .frame(width: size, height: 200 * (size/210))
                 .cornerRadius(20.0)
-            Text("豬肉漢堡").font(.title3).fontWeight(.bold)
+            Text(product.name).font(.title3).fontWeight(.bold)
             
             HStack (spacing: 2) {
-                ForEach(0 ..< 5) { item in
+                ForEach(0 ..< Int(product.rating),id: \.self) { _ in
                     Image("star")
                 }
                 Spacer()
-                Text("$40")
+                Text(product.price)
                     .font(.title3)
                     .fontWeight(.bold)
             }

@@ -7,7 +7,11 @@
 
 import SwiftUI
 
+
+
 struct DetailScreen: View {
+    let product: Product
+
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var body: some View {
         ZStack {
@@ -15,18 +19,18 @@ struct DetailScreen: View {
             ScrollView  {
                 //            Product Image
                 
-                    Image("chair_1")
+                Image(product.imageName)
                         .resizable()
                         .aspectRatio(1,contentMode: .fit)
                         .edgesIgnoringSafeArea(.top)
                 
-                DescriptionView()
+                DescriptionView(product:product)
                 
             }
             .edgesIgnoringSafeArea(.top)
             
             HStack {
-                Text("$40")
+                Text(product.price)
                     .font(.title)
                     .foregroundColor(.white)
                 Spacer()
@@ -73,7 +77,8 @@ extension View {
 
 struct DetailScreen_Previews: PreviewProvider {
     static var previews: some View {
-        DetailScreen()
+        let sampleProduct=Product(name: "豬肉漢堡", description: "我是好吃的豬肉漢堡", price: "$40", rating: 4.9 , ingredients: "豬肉＋生菜＋小黃瓜", imageName: "chair_1")
+        DetailScreen(product: sampleProduct)
     }
 }
 
@@ -88,18 +93,20 @@ struct ColorDotView: View {
 }
 
 struct DescriptionView: View {
+    let product:Product
+    
     var body: some View {
         VStack (alignment: .leading) {
             //                Title
-            Text("豬肉漢堡")
+            Text(product.name)
                 .font(.title)
                 .fontWeight(.bold)
             //                Rating
             HStack (spacing: 4) {
-                ForEach(0 ..< 5) { item in
+                ForEach(0 ..< Int(product.rating), id: \.self) { _ in
                     Image("star")
                 }
-                Text("(4.9)")
+                Text("(\(String(format: "%.1f", product.rating))")
                     .opacity(0.5)
                     .padding(.leading, 8)
                 Spacer()
@@ -108,7 +115,7 @@ struct DescriptionView: View {
             Text("餐點介紹")
                 .fontWeight(.medium)
                 .padding(.vertical, 8)
-            Text("我是好吃的豬肉漢堡")
+            Text(product.description)
                 .lineSpacing(8.0)
                 .opacity(0.6)
             
@@ -118,7 +125,7 @@ struct DescriptionView: View {
                     Text("內容物")
                         .font(.system(size: 16))
                         .fontWeight(.semibold)
-                    Text("豬肉+生菜＋小黃瓜")
+                    Text(product.ingredients)
                         .opacity(0.6)
                     
                 }
@@ -127,13 +134,13 @@ struct DescriptionView: View {
                 
                 Spacer()
                 
-                //VStack (alignment: .leading) {
+                VStack (alignment: .leading) {
                     //Text("Treatment")
                         //.font(.system(size: 16))
                         //.fontWeight(.semibold)
                     //Text("Jati Wood, Canvas, \nAmazing Love")
                         //.opacity(0.6)
-                //}
+                }
                 .frame(maxWidth: .infinity, alignment: .leading)
             }
             .padding(.vertical)
