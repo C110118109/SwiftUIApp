@@ -77,7 +77,7 @@ extension View {
 
 struct DetailScreen_Previews: PreviewProvider {
     static var previews: some View {
-        let sampleProduct=Product(name: "豬肉漢堡", description: "我是好吃的豬肉漢堡", price: "$40", rating: 4.9 , ingredients: "豬肉＋生菜＋小黃瓜", imageName: "chair_1")
+        let sampleProduct=Product(name: "豬肉漢堡", description: "我是好吃的豬肉漢堡", price: "$45", rating: 4.9 , ingredients: "豬肉＋生菜＋小黃瓜", imageName: "hamburger_1")
         DetailScreen(product: sampleProduct)
     }
 }
@@ -106,7 +106,7 @@ struct DescriptionView: View {
                 ForEach(0 ..< Int(product.rating), id: \.self) { _ in
                     Image("star")
                 }
-                Text("(\(String(format: "%.1f", product.rating))")
+                Text("(\(String(format: "%.1f)", product.rating))")
                     .opacity(0.5)
                     .padding(.leading, 8)
                 Spacer()
