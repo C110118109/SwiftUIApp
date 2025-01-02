@@ -16,6 +16,8 @@ struct Furniture_appApp: App {
         WindowGroup {
             ContentView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
+//            ShoppingCartView()
+//                .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
 }

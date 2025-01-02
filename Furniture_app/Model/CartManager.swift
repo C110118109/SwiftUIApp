@@ -11,6 +11,7 @@ func addToCart(name: String, price: Int64, quantity: Int64) {
     let context = PersistenceController.shared.container.viewContext
     let newItem = CartItem(context: context)
     newItem.name = name
+    newItem.name = name
     newItem.price = price
     newItem.quantity = quantity
 
