@@ -10,7 +10,7 @@ import SwiftUI
 struct Product {
     let name: String
     let description: String
-    let price: String
+    let price: Int64
     let rating: Double
     let ingredients: String
     let imageName: String
@@ -21,33 +21,33 @@ struct HomeScreen: View {
     @State private var selectedIndex: Int = 1
     
     let products: [Product] = [
-        Product(name: "超頂豬肉漢堡", description: "我是好吃的豬肉漢堡", price: "$45", rating: 4.9, ingredients: "豬肉+生菜＋小黃瓜", imageName: "hamburger_1"),
-        Product(name: "金黃炸雞堡", description: "我是美味的雞排漢堡", price: "$50", rating: 4.8, ingredients: "雞排+番茄＋美奶滋", imageName: "hamburger_2"),
-        Product(name: "豬排霸霸堡", description: "我是多汁的牛肉漢堡", price: "$60", rating: 5.0, ingredients: "牛肉+洋蔥＋生菜", imageName: "hamburger_3"),
-        Product(name: "起司狂潮堡", description: "我是爆漿起司漢堡", price: "$45", rating: 4.7, ingredients: "起司+生菜", imageName: "hamburger_4"),
-        Product(name: "海味鮪魚堡", description: "我是好吃鮪魚漢堡", price: "$45", rating: 4.7, ingredients: "鮪魚+洋蔥＋生菜", imageName: "hamburger_5"),
-        Product(name: "綠意森林堡", description: "我是健康到只有菜漢堡", price: "$40", rating: 4.7, ingredients: "小黃瓜+生菜＋番茄", imageName: "hamburger_6"),
-        Product(name: "海風蝦餅堡", description: "我是蝦餅漢堡", price: "$70", rating: 4.7, ingredients: "蝦餅+生菜", imageName: "hamburger_7"),
+        Product(name: "超頂豬肉漢堡", description: "我是好吃的豬肉漢堡", price: 45, rating: 4.9, ingredients: "豬肉+生菜＋小黃瓜", imageName: "hamburger_1"),
+        Product(name: "金黃炸雞堡", description: "我是美味的雞排漢堡", price: 50, rating: 4.8, ingredients: "雞排+番茄＋美奶滋", imageName: "hamburger_2"),
+        Product(name: "豬排霸霸堡", description: "我是多汁的牛肉漢堡", price: 60, rating: 5.0, ingredients: "牛肉+洋蔥＋生菜", imageName: "hamburger_3"),
+        Product(name: "起司狂潮堡", description: "我是爆漿起司漢堡", price: 45, rating: 4.7, ingredients: "起司+生菜", imageName: "hamburger_4"),
+        Product(name: "海味鮪魚堡", description: "我是好吃鮪魚漢堡", price: 45, rating: 4.7, ingredients: "鮪魚+洋蔥＋生菜", imageName: "hamburger_5"),
+        Product(name: "綠意森林堡", description: "我是健康到只有菜漢堡", price: 40, rating: 4.7, ingredients: "小黃瓜+生菜＋番茄", imageName: "hamburger_6"),
+        Product(name: "海風蝦餅堡", description: "我是蝦餅漢堡", price: 70, rating: 4.7, ingredients: "蝦餅+生菜", imageName: "hamburger_7"),
         //----------------------
-        Product(name: "黃金玉米蛋吐司", description: "金黃玉米與雞蛋的搭配，營養又美味。", price: "$40", rating: 4.8, ingredients: "玉米+雞蛋+小黃瓜+生菜", imageName: "toast_6"),
-        Product(name: "雙煎培根蛋吐司", description: "雙層煎培根與雞蛋，搭配新鮮生菜，簡單卻不平凡。", price: "$45", rating: 4.9, ingredients: "培根+雞蛋+生菜", imageName: "toast_1"),
-        Product(name: "太陽煎蛋吐司", description: "", price: "$35", rating: 4.8, ingredients: "雞蛋+肉鬆+生菜", imageName: "toast_5"),
-        Product(name: "薯香蛋泥吐司", description: "", price: "$45", rating: 5.0, ingredients: "薯泥+蛋+生菜", imageName: "toast_3"),
-        Product(name: "海洋鮪魚吐司", description: "", price: "$45", rating: 4.8, ingredients: "鮪魚+洋蔥+生菜", imageName: "toast_2"),
-        Product(name: "金脆雞排吐司", description: "", price: "$60", rating: 4.9, ingredients: "雞排+起司+生菜", imageName: "toast_4"),
+        Product(name: "黃金玉米蛋吐司", description: "金黃玉米與雞蛋的搭配，營養又美味。", price: 40, rating: 4.8, ingredients: "玉米+雞蛋+小黃瓜+生菜", imageName: "toast_6"),
+        Product(name: "雙煎培根蛋吐司", description: "雙層煎培根與雞蛋，搭配新鮮生菜，簡單卻不平凡。", price: 45, rating: 4.9, ingredients: "培根+雞蛋+生菜", imageName: "toast_1"),
+        Product(name: "太陽煎蛋吐司", description: "", price: 35, rating: 4.8, ingredients: "雞蛋+肉鬆+生菜", imageName: "toast_5"),
+        Product(name: "薯香蛋泥吐司", description: "", price: 45, rating: 5.0, ingredients: "薯泥+蛋+生菜", imageName: "toast_3"),
+        Product(name: "海洋鮪魚吐司", description: "", price: 45, rating: 4.8, ingredients: "鮪魚+洋蔥+生菜", imageName: "toast_2"),
+        Product(name: "金脆雞排吐司", description: "", price: 60, rating: 4.9, ingredients: "雞排+起司+生菜", imageName: "toast_4"),
         //-----------------------
         
-        Product(name: "九層塔香蛋餅", description: "九層塔的香氣完美融入蛋餅，帶來濃郁風味。", price: "$35", rating: 5.0, ingredients: "九層塔", imageName: "eggCake_3"),
-        Product(name: "肉鬆香脆蛋餅", description: "酥脆蛋餅皮包裹著香甜肉鬆，口感層次分明。", price: "$35", rating: 4.8, ingredients: "肉鬆", imageName: "eggCake_1"),
-        Product(name: "原味經典蛋餅", description: "", price: "$30", rating: 4.7, ingredients: "無", imageName: "eggCake_4"),
-        Product(name: "起司熔岩蛋餅", description: "", price: "$40", rating: 4.9, ingredients: "起司", imageName: "eggCake_5"),
-        Product(name: "培根脆餅", description: "", price: "$40", rating: 4.9, ingredients: "培根", imageName: "eggCake_2"),
-        Product(name: "熱狗狂熱蛋餅", description: "", price: "$40", rating: 4.8, ingredients: "熱狗", imageName: "eggCake_6"),
+        Product(name: "九層塔香蛋餅", description: "九層塔的香氣完美融入蛋餅，帶來濃郁風味。", price: 35, rating: 5.0, ingredients: "九層塔", imageName: "eggCake_3"),
+        Product(name: "肉鬆香脆蛋餅", description: "酥脆蛋餅皮包裹著香甜肉鬆，口感層次分明。", price: 35, rating: 4.8, ingredients: "肉鬆", imageName: "eggCake_1"),
+        Product(name: "原味經典蛋餅", description: "", price: 30, rating: 4.7, ingredients: "無", imageName: "eggCake_4"),
+        Product(name: "起司熔岩蛋餅", description: "", price: 40, rating: 4.9, ingredients: "起司", imageName: "eggCake_5"),
+        Product(name: "培根脆餅", description: "", price: 40, rating: 4.9, ingredients: "培根", imageName: "eggCake_2"),
+        Product(name: "熱狗狂熱蛋餅", description: "", price: 40, rating: 4.8, ingredients: "熱狗", imageName: "eggCake_6"),
         //-----------------------
-        Product(name: "奶茶", description: "經典台式奶茶，口感香醇濃郁。", price: "$25", rating: 4.9, ingredients: "紅茶+牛奶", imageName: "drink_1"),
-        Product(name: "豆漿", description: "傳統風味的豆漿，健康又營養。", price: "$20", rating: 4.8, ingredients: "黃豆", imageName: "drink_2"),
-        Product(name: "紅茶", description: "", price: "$20", rating: 4.8, ingredients: "紅茶", imageName: "drink_3"),
-        Product(name: "柳橙汁", description: "", price: "$25", rating: 4.7, ingredients: "柳橙", imageName: "drink_4")
+        Product(name: "奶茶", description: "經典台式奶茶，口感香醇濃郁。", price: 25, rating: 4.9, ingredients: "紅茶+牛奶", imageName: "drink_1"),
+        Product(name: "豆漿", description: "傳統風味的豆漿，健康又營養。", price: 20, rating: 4.8, ingredients: "黃豆", imageName: "drink_2"),
+        Product(name: "紅茶", description: "", price: 20, rating: 4.8, ingredients: "紅茶", imageName: "drink_3"),
+        Product(name: "柳橙汁", description: "", price: 25, rating: 4.7, ingredients: "柳橙", imageName: "drink_4")
 
     ]
 
@@ -290,7 +290,7 @@ struct ProductCardView: View {
                     Image("star")
                 }
                 Spacer()
-                Text(product.price)
+                Text("$"+String(product.price))
                     .font(.title3)
                     .fontWeight(.bold)
             }

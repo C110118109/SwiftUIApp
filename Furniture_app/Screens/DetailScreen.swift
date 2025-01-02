@@ -13,6 +13,7 @@ struct DetailScreen: View {
     let product: Product
 
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @State private var isPresented = false
     var body: some View {
         ZStack {
             Color("Bg")
@@ -30,19 +31,26 @@ struct DetailScreen: View {
             .edgesIgnoringSafeArea(.top)
             
             HStack {
-                Text(product.price)
+                Text("$"+String(product.price))
                     .font(.title)
                     .foregroundColor(.white)
                 Spacer()
-                
-                Text("加入購物車")
-                    .font(.title3)
-                    .fontWeight(.semibold)
-                    .foregroundColor(Color("Primary"))
-                    .padding()
-                    .padding(.horizontal, 8)
-                    .background(Color.white)
-                    .cornerRadius(10.0)
+                Button(action: {
+                    addToCart(name: product.name, price: product.price, quantity: 1)
+                    isPresented = true
+                }){
+                    Text("加入購物車")
+                        .font(.title3)
+                        .fontWeight(.semibold)
+                        .foregroundColor(Color("Primary"))
+                        .padding()
+                        .padding(.horizontal, 8)
+                        .background(Color.white)
+                        .cornerRadius(10.0)
+                }	
+//                .alert("購物車加入成功",isPresented:$isPresented)
+            
+                    
                 
             }
             .padding()
@@ -77,7 +85,7 @@ extension View {
 
 struct DetailScreen_Previews: PreviewProvider {
     static var previews: some View {
-        let sampleProduct=Product(name: "豬肉漢堡", description: "我是好吃的豬肉漢堡", price: "$45", rating: 4.9 , ingredients: "豬肉＋生菜＋小黃瓜", imageName: "hamburger_1")
+        let sampleProduct=Product(name: "豬肉漢堡", description: "我是好吃的豬肉漢堡", price: 45, rating: 4.9 , ingredients: "豬肉＋生菜＋小黃瓜", imageName: "hamburger_1")
         DetailScreen(product: sampleProduct)
     }
 }
