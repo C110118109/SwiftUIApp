@@ -11,13 +11,12 @@ func addToCart(name: String, price: Int64, quantity: Int64) {
     let context = PersistenceController.shared.container.viewContext
     let newItem = CartItem(context: context)
     newItem.name = name
-    newItem.name = name
     newItem.price = price
     newItem.quantity = quantity
 
     do {
         try context.save()
-        print("存入資料 名稱：\(name) 價格：\(price)")
+        print("存入資料 名稱：\(name) 價格：\(price)")	
     } catch {
         print("Failed to save cart item: \(error)")
     }

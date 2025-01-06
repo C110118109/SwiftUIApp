@@ -13,7 +13,8 @@ struct DetailScreen: View {
     let product: Product
 
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @State private var isPresented = false
+    //@State private var isPresented = false
+    @State private var showAlert = false
     var body: some View {
         ZStack {
             Color("Bg")
@@ -37,7 +38,7 @@ struct DetailScreen: View {
                 Spacer()
                 Button(action: {
                     addToCart(name: product.name, price: product.price, quantity: 1)
-                    isPresented = true
+                    showAlert=true
                 }){
                     Text("加入購物車")
                         .font(.title3)
@@ -47,7 +48,15 @@ struct DetailScreen: View {
                         .padding(.horizontal, 8)
                         .background(Color.white)
                         .cornerRadius(10.0)
-                }	
+                }.alert(isPresented: $showAlert) {
+                    Alert(
+                        title: Text("成功"),
+                        message: Text("已成功加入購物車"),
+                        dismissButton: .default(Text("OK"), action: {
+                            presentationMode.wrappedValue.dismiss() // 返回到上一個畫面
+                        })
+                    )
+                }
 //                .alert("購物車加入成功",isPresented:$isPresented)
             
                     

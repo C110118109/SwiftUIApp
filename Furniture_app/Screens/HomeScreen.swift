@@ -197,17 +197,17 @@ struct HomeScreen_Previews: PreviewProvider {
 struct AppBarView: View {
     var body: some View {
         HStack {
-            Button(action: {}) {
-                Image("menu")
-                    .padding()
-                    .background(Color.white)
-                    .cornerRadius(10.0)
-            }
+//            Button(action: {}) {
+//                Image("menu")
+//                    .padding()
+//                    .background(Color.white)
+//                    .cornerRadius(10.0)
+//            }
             
             Spacer()
             
             Button(action: {}) {
-                Image(uiImage: #imageLiteral(resourceName: "shop"))
+                Image(uiImage: #imageLiteral(resourceName: "Profile"))
                     .resizable()
                     .frame(width: 42, height: 42)
                     .cornerRadius(10.0)
@@ -244,11 +244,13 @@ struct SearchAndScanView: View {
             .padding(.trailing, 8)
             
             Button(action: {}) {
-                Image("Scan")
+                Image("Search")
                     .padding()
-                    .background(Color("Primary"))
+                    .background(Color.white) // 或者 Color("Primary")
                     .cornerRadius(10.0)
+                    .foregroundColor(Color.white)
             }
+
         }
         .padding(.horizontal)
     }
@@ -306,27 +308,42 @@ struct ProductCardView: View {
 
 struct BottomNavBarView: View {
     var body: some View {
+        
         HStack {
-            BottomNavBarItem(image: Image("Home"), action: {})
-            BottomNavBarItem(image: Image("fav"), action: {})
-            BottomNavBarItem(image: Image("shop"), action: {})
-            BottomNavBarItem(image: Image("User"), action: {})
+            BottomNavBarItem(systemImageName: "house", action: { print("主頁按鈕被點擊") })
+            //BottomNavBarItem(systemImageName: "heart", action: { print("收藏按鈕被點擊") })
+            // 使用 NavigationLink 跳转到购物车页面
+            NavigationLink(destination: ShoppingCartView()) {
+                Image(systemName: "cart")
+                    .frame(maxWidth: .infinity)
+                    .font(.system(size: 24))
+                    .foregroundColor(.gray) // 图标颜色
+            }
+            //BottomNavBarItem(systemImageName: "person", action: { print("使用者按鈕被點擊") })
         }
         .padding()
-        .background(Color.white)
+        .background(Color.white)	
         .clipShape(Capsule())
         .padding(.horizontal)
         .shadow(color: Color.blue.opacity(0.15), radius: 8, x: 2, y: 6)
     }
 }
 
+
 struct BottomNavBarItem: View {
-    let image: Image
+    let systemImageName: String
     let action: () -> Void
+    let color: Color = .gray // 默認顏色
+    
     var body: some View {
         Button(action: action) {
-            image
+            Image(systemName: systemImageName)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 24, height: 24)
+                .foregroundColor(color)
                 .frame(maxWidth: .infinity)
         }
     }
 }
+
