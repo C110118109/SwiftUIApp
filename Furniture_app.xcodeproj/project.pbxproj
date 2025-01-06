@@ -264,7 +264,7 @@
 				};
 			};
 			buildConfigurationList = 8804738E25D8C14200F9A279 /* Build configuration list for PBXProject "Furniture_app" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
